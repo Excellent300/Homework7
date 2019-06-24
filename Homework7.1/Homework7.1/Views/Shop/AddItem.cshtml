@@ -1,0 +1,33 @@
+﻿@model List<Homework7._1.ViewModels.ShopItemModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddItem</title>
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body>
+@using (Html.BeginForm("AddItem", "Shop", FormMethod.Post))
+{
+    <h1>Add Item</h1>
+    <div> 
+      <label>Name:</label>  <br />             <input id="Text1" type="text" name="Name" required/><br /><br />
+        <label>Description:</label> <br />       <input id="Text1" type="text" name="Descr" required/><br /><br />
+      <label>Price:</label>    <br />            <input id="Text1" type="number" name="Prices" min="0" required/><br /><br />
+      <label>Quantity Available:</label> <br />   <input id="Text1" type="number" name="Quantity" min="0" required/><br />  <br />  
+
+        <input id="Submit1" type="submit" value="Save" />
+
+
+        <input id="Submit1" type="submit" value="Cancel" onclick="window.location.href='@Url.Action("Index", "Shop")';"/>
+
+    </div>
+}
+</body>
+</html>

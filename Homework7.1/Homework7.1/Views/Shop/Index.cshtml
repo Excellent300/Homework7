@@ -1,0 +1,313 @@
+﻿@model IEnumerable<Homework7._1.ViewModels.ShopItemModel>
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+ 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Just_Right Clothing</title>
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+
+
+    <script>
+        function hideTables() {
+            var x = document.getElementById("myDIV1");
+            var y = document.getElementById("myDIV3");
+            var z = document.getElementById("myDIV2");
+
+            x.style.visibility = "hidden"
+            y.style.visibility = "hidden"
+            z.style.visibility = "hidden"
+        }
+
+
+    </script>
+
+    <script>
+        function orderName() {
+            var x = document.getElementById("myDIV");
+            var y = document.getElementById("myDIV3");
+            var z = document.getElementById("myDIV2");
+            var w = document.getElementById("myDIV1");
+          
+            if (w.style.visibility === "hidden" ) {
+
+                x.style.visibility = "hidden";
+                y.style.visibility = "hidden";
+                z.style.visibility = "hidden";
+                w.style.visibility = "visible";
+
+                } 
+  
+}
+    </script>
+
+    <script>
+        function orderPrice() {
+            var x = document.getElementById("myDIV");
+            var y = document.getElementById("myDIV3");
+            var z = document.getElementById("myDIV2");
+            var w = document.getElementById("myDIV1");
+
+            if (z.style.visibility === "hidden") {
+
+                x.style.visibility = "hidden";
+                y.style.visibility = "hidden";
+                w.style.visibility = "hidden";
+                z.style.visibility = "visible";
+
+            }
+}
+    </script>
+
+
+    <script>
+        function orderQuantity() {
+            var x = document.getElementById("myDIV");
+            var y = document.getElementById("myDIV3");
+            var z = document.getElementById("myDIV2");
+            var w = document.getElementById("myDIV1");
+
+            if (y.style.visibility === "hidden") {
+
+                x.style.visibility = "hidden";
+                w.style.visibility = "hidden";
+                z.style.visibility = "hidden";
+                y.style.visibility = "visible";
+
+            }
+}
+    </script>
+
+    <script>
+function myFunction3() {
+  var x = document.getElementById("myDIV3");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+    </script>
+
+    @*<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+    </script>*@
+
+
+  
+</head>
+<body onload="hideTables()">
+    <h1>Just_Right Clothing</h1>
+
+
+
+    <a href="@Url.Action("Part_2","Shop")">Click here for part 2</a>
+   
+    <br />  <br /> 
+    <div >
+        <input id="Submit1" type="submit" value="Add" onclick="window.location.href='@Url.Action("AddItem", "Shop")';" />
+
+        <div id="myDIV">
+            <table id="tblCustomers" align="center"  >
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity Available</th>
+
+
+
+
+                </tr>
+
+
+             
+
+
+           
+    
+         
+             @foreach (var sort in Model)
+             {
+
+                    <tr>
+
+                        <td>@sort.Name</td>
+                        <td>@sort.Description</td>
+                        <td>@sort.Price</td>
+                        <td>@sort.QuantityAvailable</td>
+
+
+                    </tr>
+
+
+             }
+            </table>
+        </div>  
+       
+
+        <br />
+   
+
+        <div id="myDIV1">
+            <table id="tblCustomers" align="center"  >
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity Available</th>
+
+                     
+
+
+                </tr>
+    
+                @foreach (var item in Model.OrderBy(zz => zz.Name))
+            {
+
+                    <tr>
+
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                        <td>@item.Price</td>
+                        <td>@item.QuantityAvailable</td>
+
+
+                    </tr>
+
+
+                }
+            </table>
+        </div>
+        <br /><br />
+
+
+
+
+    
+
+
+
+        <br />
+
+        <div id="myDIV2">
+        <table id="tblCustomers" align="center"  >
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity Available</th>
+
+
+
+
+            </tr>
+
+            @foreach (var item in Model.OrderBy(zz => zz.Price))
+            {
+
+                <tr>
+
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Price</td>
+                    <td>@item.QuantityAvailable</td>
+
+
+                </tr>
+
+
+            }
+        </table><br /><br />
+</div>
+
+
+      
+
+        <br />
+
+        <div id="myDIV3">
+        <table id="tblCustomers" align="center" >
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity Available</th>
+
+
+
+                 
+            </tr>
+
+            @foreach (var item in Model.OrderBy(zz => zz.QuantityAvailable))
+            {
+
+                <tr>
+
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Price</td>
+                    <td>@item.QuantityAvailable</td>
+
+
+                </tr>
+
+
+            }
+        </table>
+            </div>
+
+        <br /><br />
+        <br /><br />
+        <br /><br />
+        <br /><br />
+        <br /><br />
+        <br /><br />
+
+<div  id="LowerDiv">
+        <h2>Sort Functions</h2>
+        <input id="Submit1" type="button" value="Sort by name" onclick="orderName()" />
+        <input id="Submit1" type="submit" value="Sort by price" onclick="orderPrice()" />
+        <input id="Submit1" type="submit" value="Sort by quantity" onclick="orderQuantity()" />
+        <input id="btnGetCount" type="button" value="How many items are in the list ?" onclick="count()" />
+
+    </div>
+
+
+
+
+        @*<script> function myfunc() {
+                var rowcount = document.getElementById('tblCustomers').rows.length;
+
+               alert('The number of rows are' + rowcount-1);
+            }
+                   </script>*@
+
+        @*@if (ViewBag.counts !=null)
+            {*@
+        <script>
+            function count() {
+                alert( 'Number of items: '+ @Model.Count());
+            }
+
+
+        </script>
+        @*}*@
+
+
+    </div>  
+
+</body>
+</html>
